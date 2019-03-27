@@ -140,7 +140,7 @@ public class gameController : MonoBehaviour
 
     private AIClass getBestMove(int[] tempBoard, int player, int depth)
     {
-        // fail-safe
+        // fail-safe (I thought)
         if(depth >= 8)
         {
             return new AIClass(0);
