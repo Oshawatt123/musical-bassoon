@@ -34,7 +34,7 @@ public class gameController : MonoBehaviour
         turn = (int)gridValue.X_VAL;
         turnImage.sprite = buttonSprites[turn];
 
-        humanPlayer = turn;
+        humanPlayer = (int) gridValue.X_VAL;
         if(humanPlayer == (int)gridValue.X_VAL)
         {
             aiPlayer = (int)gridValue.O_VAL;
@@ -92,21 +92,6 @@ public class gameController : MonoBehaviour
     // return 1 for O, 2 for X, 0 for draws, and -1 for no victory condition met
     private int WinnerCheck(int[] board)
     {
-        // draw check
-        int count = 0;
-        for (int i = 0; i < board.Length; i++)
-        {
-            if(board[i] != (int)gridValue.NO_VAL)
-            {
-                count += 1;
-            }
-        }
-        Debug.Log(count + " : " + board.Length);
-        if(count == board.Length)
-        {
-            return 0;
-        }
-
 
         // Horizontal
         int w1 = board[0] + board[1] + board[2]; // Top
@@ -134,6 +119,21 @@ public class gameController : MonoBehaviour
             {
                 return 2;
             }
+        }
+
+        // draw check
+        int count = 0;
+        for (int i = 0; i < board.Length; i++)
+        {
+            if (board[i] != (int)gridValue.NO_VAL)
+            {
+                count += 1;
+            }
+        }
+        Debug.Log(count + " : " + board.Length);
+        if (count == board.Length)
+        {
+            return 0;
         }
         return -1;
     }
